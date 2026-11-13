@@ -1,0 +1,66 @@
+package servicedesk
+
+import (
+	"bytes"
+	"encoding/gob"
+	"encoding/json"
+	"net"
+	"net/rpc"
+	"testing"
+
+	"github.com/mattermost/mattermost/server/public/model"
+	"github.com/mattermost/mattermost/server/public/plugin"
+	"github.com/stretchr/testify/require"
+)
+
+type NotificationRPCProbe struct{}
+
+func (*NotificationRPCProbe) CreatePost(args *plugin.Z_CreatePostArgs, reply *model.Post) error {
+	reply.SetProps(args.A.GetProps())
+	return nil
+}
+
+func (*NotificationRPCProbe) GetUser(id string, reply *model.User) error {
+	reply.Id, reply.Roles = id, "system_user"
+	return nil
+}
+
+func TestNotificationPropsSurvivePluginRPC(t *testing.T) {
+	for _, card := range []serviceNotificationCard{
+		{Version: 1, Key: "SR-1", Reporter: notificationPerson{Name: "Member"}},
+		{Version: 1, Key: "SR-2", Title: "طلب خدمة", Description: "تفاصيل",
+			Reporter: notificationPerson{ID: "reporter", Name: "مقدم الطلب"},
+			Assignee: notificationPerson{ID: "agent", Name: "موظف الدعم"},
+			Fields: []notificationField{{Label: "النوع", Value: "طلب"}},
+			URL: "https://example.test/request/SR-2", CapturedAt: 1234, ApprovalDue: 5678},
+	} {
+		t.Run(card.Key, func(t *testing.T) {
+			props := serviceNotificationRPCProps(card)
+			originalJSON, err := json.Marshal(card)
+			require.NoError(t, err)
+			propsJSON, err := json.Marshal(props)
+			require.NoError(t, err)
+			require.JSONEq(t, string(originalJSON), string(propsJSON))
+			args := &plugin.Z_CreatePostArgs{A: &model.Post{Props: model.StringInterface{"workspace_service_notice": props}}}
+			var transport bytes.Buffer
+			require.NoError(t, gob.NewEncoder(&transport).Encode(args))
+			var decoded plugin.Z_CreatePostArgs
+			require.NoError(t, gob.NewDecoder(&transport).Decode(&decoded))
+			decodedJSON, err := json.Marshal(decoded.A.Props["workspace_service_notice"])
+			require.NoError(t, err)
+			require.JSONEq(t, string(originalJSON), string(decodedJSON))
+			server := rpc.NewServer()
+			require.NoError(t, server.RegisterName("Plugin", &NotificationRPCProbe{}))
+			serverConn, clientConn := net.Pipe()
+			go server.ServeConn(serverConn)
+			client := rpc.NewClient(clientConn)
+			t.Cleanup(func() { _ = client.Close(); _ = serverConn.Close() })
+			var saved model.Post
+			require.NoError(t, client.Call("Plugin.CreatePost", args, &saved))
+			var account model.User
+			require.NoError(t, client.Call("Plugin.GetUser", "member", &account))
+			require.Equal(t, "member", account.Id)
+			require.Equal(t, "system_user", account.Roles)
+		})
+	}
+}

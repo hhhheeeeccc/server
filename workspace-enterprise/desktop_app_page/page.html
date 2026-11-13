@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>تحديث التطبيق مطلوب | {{.BrandName}}</title>
+    <style>
+        @font-face {font-family: Thmanyah; src: url('{{.RegularFontURL}}') format('opentype'); font-weight: 400; font-display: swap;}
+        @font-face {font-family: Thmanyah; src: url('{{.BoldFontURL}}') format('opentype'); font-weight: 700; font-display: swap;}
+        * {box-sizing: border-box;}
+        body {margin: 0; color: #161616; background: #f9fafb; font-family: Thmanyah, Tahoma, sans-serif;}
+        .layout {display: flex; min-height: 100vh; padding: 18px;}
+        .visual, .action {width: 50%; min-width: 0;}
+        .visual {position: relative; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 30px 40px; border-radius: 14px; background: #00987e; color: #fff;}
+        .visual-head {position: relative; z-index: 1;}
+        .visual-logo {width: 72px; height: 72px; object-fit: contain;}
+        .visual-subtitle {max-width: 430px; margin: 10px 0 0; font-size: 24px; line-height: 1.5;}
+        .hero {display: block; width: min(100%, 820px); max-height: 65vh; margin: 20px auto 0; object-fit: contain;}
+        .action {display: flex; align-items: center; justify-content: center; padding: 24px;}
+        .content {width: min(100%, 540px);}
+        .mobile-logo {display: none; width: 60px; height: 60px; margin: 0 auto 40px;}
+        h1 {margin: 0 0 16px; font-size: 30px; font-weight: 700; line-height: 1.4;}
+        .message {margin: 0 0 26px; color: #595761; font-size: 18px; line-height: 1.8;}
+        .version {direction: ltr; unicode-bidi: isolate; display: inline-block; font-weight: 700; white-space: nowrap;}
+        .actions {display: flex; flex-direction: column; gap: 12px;}
+        .download {display: flex; min-height: 48px; align-items: center; justify-content: center; padding: 10px 18px; border-radius: 4px; background: #00987e; color: #fff; font-size: 17px; font-weight: 700; text-align: center; text-decoration: none;}
+        .download:hover, .download:focus-visible {background: #007e6a;}
+        .download.secondary {border: 1px solid #00987e; background: transparent; color: #007e6a;}
+        .download.secondary:hover, .download.secondary:focus-visible {background: #e6f6f2;}
+        .help {margin: 24px 0 0; color: #595761; font-size: 15px; line-height: 1.7;}
+        .help a {color: #007e6a; text-underline-offset: 3px;}
+        @media (max-width: 1199px) {
+            .visual {display: none;}
+            .action {width: 100%;}
+            .mobile-logo {display: block;}
+        }
+        @media (max-width: 699px) {
+            .layout {padding: 32px 0;}
+            .action {padding: 24px;}
+            h1 {font-size: 25px;}
+            .message {font-size: 16px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <aside class="visual" aria-label="تعاون">
+            <div class="visual-head">
+                <img class="visual-logo" src="{{.WhiteLogoURL}}" alt="تعاون">
+                <p class="visual-subtitle">كل مجتمع ناجح يبدأ بتواصل أفضل</p>
+            </div>
+            <img class="hero" src="{{.HeroImageURL}}" alt="">
+        </aside>
+        <main class="action">
+            <div class="content">
+                <img class="mobile-logo" src="{{.LogoURL}}" alt="تعاون">
+                <h1>يلزم تحديث تطبيق سطح المكتب</h1>
+                <p class="message">إصدار التطبيق لديك <span class="version">{{.CurrentVersion}}</span> أقدم من الحد الأدنى المطلوب <span class="version">{{.MinimumVersion}}</span>. حدّث تطبيق تعاون للمتابعة، أو افتح تعاون في متصفح الويب.</p>
+                <div class="actions">{{if .DownloadLink}}<a class="download" href="{{.DownloadLink}}" target="_blank" rel="noopener noreferrer">تنزيل تحديث تعاون</a>{{else}}<a class="download" href="{{.LinuxDownloadLink}}" target="_blank" rel="noopener noreferrer">تنزيل تعاون لنظام Linux</a><a class="download secondary" href="{{.WindowsDownloadLink}}" target="_blank" rel="noopener noreferrer">تنزيل تعاون لنظام Windows</a>{{end}}</div>
+                <p class="help">إذا احتجت مساعدة، تواصل مع مسؤول النظام. {{if .HelpLink}}<a href="{{.HelpLink}}" target="_blank" rel="noopener noreferrer">مركز المساعدة</a>{{end}}</p>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

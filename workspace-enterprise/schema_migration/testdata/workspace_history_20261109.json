@@ -1,0 +1,730 @@
+[
+  {
+    "Version": "1",
+    "Name": "create_teams"
+  },
+  {
+    "Version": "2",
+    "Name": "create_team_members"
+  },
+  {
+    "Version": "3",
+    "Name": "create_cluster_discovery"
+  },
+  {
+    "Version": "4",
+    "Name": "create_command_webhooks"
+  },
+  {
+    "Version": "5",
+    "Name": "create_compliances"
+  },
+  {
+    "Version": "6",
+    "Name": "create_emojis"
+  },
+  {
+    "Version": "7",
+    "Name": "create_user_groups"
+  },
+  {
+    "Version": "8",
+    "Name": "create_group_members"
+  },
+  {
+    "Version": "9",
+    "Name": "create_group_teams"
+  },
+  {
+    "Version": "10",
+    "Name": "create_group_channels"
+  },
+  {
+    "Version": "11",
+    "Name": "create_link_metadata"
+  },
+  {
+    "Version": "12",
+    "Name": "create_commands"
+  },
+  {
+    "Version": "13",
+    "Name": "create_incoming_webhooks"
+  },
+  {
+    "Version": "14",
+    "Name": "create_outgoing_webhooks"
+  },
+  {
+    "Version": "15",
+    "Name": "create_systems"
+  },
+  {
+    "Version": "16",
+    "Name": "create_reactions"
+  },
+  {
+    "Version": "17",
+    "Name": "create_roles"
+  },
+  {
+    "Version": "18",
+    "Name": "create_schemes"
+  },
+  {
+    "Version": "19",
+    "Name": "create_licenses"
+  },
+  {
+    "Version": "20",
+    "Name": "create_posts"
+  },
+  {
+    "Version": "21",
+    "Name": "create_product_notice_view_state"
+  },
+  {
+    "Version": "22",
+    "Name": "create_sessions"
+  },
+  {
+    "Version": "23",
+    "Name": "create_terms_of_service"
+  },
+  {
+    "Version": "24",
+    "Name": "create_audits"
+  },
+  {
+    "Version": "25",
+    "Name": "create_oauth_access_data"
+  },
+  {
+    "Version": "26",
+    "Name": "create_preferences"
+  },
+  {
+    "Version": "27",
+    "Name": "create_status"
+  },
+  {
+    "Version": "28",
+    "Name": "create_tokens"
+  },
+  {
+    "Version": "29",
+    "Name": "create_bots"
+  },
+  {
+    "Version": "30",
+    "Name": "create_user_access_tokens"
+  },
+  {
+    "Version": "31",
+    "Name": "create_remote_clusters"
+  },
+  {
+    "Version": "32",
+    "Name": "create_sharedchannels"
+  },
+  {
+    "Version": "33",
+    "Name": "create_sidebar_channels"
+  },
+  {
+    "Version": "34",
+    "Name": "create_oauthauthdata"
+  },
+  {
+    "Version": "35",
+    "Name": "create_sharedchannelattachments"
+  },
+  {
+    "Version": "36",
+    "Name": "create_sharedchannelusers"
+  },
+  {
+    "Version": "37",
+    "Name": "create_sharedchannelremotes"
+  },
+  {
+    "Version": "38",
+    "Name": "create_jobs"
+  },
+  {
+    "Version": "39",
+    "Name": "create_channel_member_history"
+  },
+  {
+    "Version": "40",
+    "Name": "create_sidebar_categories"
+  },
+  {
+    "Version": "41",
+    "Name": "create_upload_sessions"
+  },
+  {
+    "Version": "42",
+    "Name": "create_threads"
+  },
+  {
+    "Version": "43",
+    "Name": "thread_memberships"
+  },
+  {
+    "Version": "44",
+    "Name": "create_user_terms_of_service"
+  },
+  {
+    "Version": "45",
+    "Name": "create_plugin_key_value_store"
+  },
+  {
+    "Version": "46",
+    "Name": "create_users"
+  },
+  {
+    "Version": "47",
+    "Name": "create_file_info"
+  },
+  {
+    "Version": "48",
+    "Name": "create_oauth_apps"
+  },
+  {
+    "Version": "49",
+    "Name": "create_channels"
+  },
+  {
+    "Version": "50",
+    "Name": "create_channelmembers"
+  },
+  {
+    "Version": "51",
+    "Name": "create_msg_root_count"
+  },
+  {
+    "Version": "52",
+    "Name": "create_public_channels"
+  },
+  {
+    "Version": "53",
+    "Name": "create_retention_policies"
+  },
+  {
+    "Version": "54",
+    "Name": "create_crt_channelmembership_count"
+  },
+  {
+    "Version": "55",
+    "Name": "create_crt_thread_count_and_unreads"
+  },
+  {
+    "Version": "56",
+    "Name": "upgrade_channels_v6.0"
+  },
+  {
+    "Version": "57",
+    "Name": "upgrade_command_webhooks_v6.0"
+  },
+  {
+    "Version": "58",
+    "Name": "upgrade_channelmembers_v6.0"
+  },
+  {
+    "Version": "59",
+    "Name": "upgrade_users_v6.0"
+  },
+  {
+    "Version": "60",
+    "Name": "upgrade_jobs_v6.0"
+  },
+  {
+    "Version": "61",
+    "Name": "upgrade_link_metadata_v6.0"
+  },
+  {
+    "Version": "62",
+    "Name": "upgrade_sessions_v6.0"
+  },
+  {
+    "Version": "63",
+    "Name": "upgrade_threads_v6.0"
+  },
+  {
+    "Version": "64",
+    "Name": "upgrade_status_v6.0"
+  },
+  {
+    "Version": "65",
+    "Name": "upgrade_groupchannels_v6.0"
+  },
+  {
+    "Version": "66",
+    "Name": "upgrade_posts_v6.0"
+  },
+  {
+    "Version": "67",
+    "Name": "upgrade_channelmembers_v6.1"
+  },
+  {
+    "Version": "68",
+    "Name": "upgrade_teammembers_v6.1"
+  },
+  {
+    "Version": "69",
+    "Name": "upgrade_jobs_v6.1"
+  },
+  {
+    "Version": "70",
+    "Name": "upgrade_cte_v6.1"
+  },
+  {
+    "Version": "71",
+    "Name": "upgrade_sessions_v6.1"
+  },
+  {
+    "Version": "72",
+    "Name": "upgrade_schemes_v6.3"
+  },
+  {
+    "Version": "73",
+    "Name": "upgrade_plugin_key_value_store_v6.3"
+  },
+  {
+    "Version": "74",
+    "Name": "upgrade_users_v6.3"
+  },
+  {
+    "Version": "75",
+    "Name": "alter_upload_sessions_index"
+  },
+  {
+    "Version": "76",
+    "Name": "upgrade_lastrootpostat"
+  },
+  {
+    "Version": "77",
+    "Name": "upgrade_users_v6.5"
+  },
+  {
+    "Version": "78",
+    "Name": "create_oauth_mattermost_app_id"
+  },
+  {
+    "Version": "79",
+    "Name": "usergroups_displayname_index"
+  },
+  {
+    "Version": "80",
+    "Name": "posts_createat_id"
+  },
+  {
+    "Version": "81",
+    "Name": "threads_deleteat"
+  },
+  {
+    "Version": "82",
+    "Name": "upgrade_oauth_mattermost_app_id"
+  },
+  {
+    "Version": "83",
+    "Name": "threads_threaddeleteat"
+  },
+  {
+    "Version": "84",
+    "Name": "recent_searches"
+  },
+  {
+    "Version": "85",
+    "Name": "fileinfo_add_archived_column"
+  },
+  {
+    "Version": "86",
+    "Name": "add_cloud_limits_archived"
+  },
+  {
+    "Version": "87",
+    "Name": "sidebar_categories_index"
+  },
+  {
+    "Version": "88",
+    "Name": "remaining_migrations"
+  },
+  {
+    "Version": "89",
+    "Name": "add-channelid-to-reaction"
+  },
+  {
+    "Version": "90",
+    "Name": "create_enums"
+  },
+  {
+    "Version": "91",
+    "Name": "create_post_reminder"
+  },
+  {
+    "Version": "92",
+    "Name": "add_createat_to_teamembers"
+  },
+  {
+    "Version": "93",
+    "Name": "notify_admin"
+  },
+  {
+    "Version": "94",
+    "Name": "threads_teamid"
+  },
+  {
+    "Version": "95",
+    "Name": "remove_posts_parentid"
+  },
+  {
+    "Version": "96",
+    "Name": "threads_threadteamid"
+  },
+  {
+    "Version": "97",
+    "Name": "create_posts_priority"
+  },
+  {
+    "Version": "98",
+    "Name": "create_post_acknowledgements"
+  },
+  {
+    "Version": "99",
+    "Name": "create_drafts"
+  },
+  {
+    "Version": "100",
+    "Name": "add_draft_priority_column"
+  },
+  {
+    "Version": "101",
+    "Name": "create_true_up_review_history"
+  },
+  {
+    "Version": "102",
+    "Name": "posts_originalid_index"
+  },
+  {
+    "Version": "103",
+    "Name": "add_sentat_to_notifyadmin"
+  },
+  {
+    "Version": "104",
+    "Name": "upgrade_notifyadmin"
+  },
+  {
+    "Version": "105",
+    "Name": "remove_tokens"
+  },
+  {
+    "Version": "106",
+    "Name": "fileinfo_channelid"
+  },
+  {
+    "Version": "107",
+    "Name": "threadmemberships_cleanup"
+  },
+  {
+    "Version": "108",
+    "Name": "remove_orphaned_oauth_preferences"
+  },
+  {
+    "Version": "109",
+    "Name": "create_persistent_notifications"
+  },
+  {
+    "Version": "111",
+    "Name": "update_vacuuming"
+  },
+  {
+    "Version": "112",
+    "Name": "rework_desktop_tokens"
+  },
+  {
+    "Version": "113",
+    "Name": "create_retentionidsfordeletion_table"
+  },
+  {
+    "Version": "114",
+    "Name": "sharedchannelremotes_drop_nextsyncat_description"
+  },
+  {
+    "Version": "115",
+    "Name": "user_reporting_changes"
+  },
+  {
+    "Version": "116",
+    "Name": "create_outgoing_oauth_connections"
+  },
+  {
+    "Version": "117",
+    "Name": "msteams_shared_channels"
+  },
+  {
+    "Version": "118",
+    "Name": "create_index_poststats"
+  },
+  {
+    "Version": "119",
+    "Name": "msteams_shared_channels_opts"
+  },
+  {
+    "Version": "120",
+    "Name": "create_channelbookmarks_table"
+  },
+  {
+    "Version": "121",
+    "Name": "remove_true_up_review_history"
+  },
+  {
+    "Version": "122",
+    "Name": "preferences_value_length"
+  },
+  {
+    "Version": "123",
+    "Name": "remove_upload_file_permission"
+  },
+  {
+    "Version": "124",
+    "Name": "remove_manage_team_permission"
+  },
+  {
+    "Version": "125",
+    "Name": "remoteclusters_add_default_team_id"
+  },
+  {
+    "Version": "126",
+    "Name": "sharedchannels_remotes_add_deleteat"
+  },
+  {
+    "Version": "127",
+    "Name": "add_mfa_used_ts_to_users"
+  },
+  {
+    "Version": "128",
+    "Name": "create_scheduled_posts"
+  },
+  {
+    "Version": "129",
+    "Name": "add_property_system_architecture"
+  },
+  {
+    "Version": "130",
+    "Name": "system_console_stats"
+  },
+  {
+    "Version": "131",
+    "Name": "create_index_pagination_on_property_values"
+  },
+  {
+    "Version": "132",
+    "Name": "create_index_pagination_on_property_fields"
+  },
+  {
+    "Version": "133",
+    "Name": "add_channel_banner_fields"
+  },
+  {
+    "Version": "134",
+    "Name": "create_access_control_policies"
+  },
+  {
+    "Version": "135",
+    "Name": "sidebarchannels_categoryid"
+  },
+  {
+    "Version": "136",
+    "Name": "create_attribute_view"
+  },
+  {
+    "Version": "137",
+    "Name": "update_attribute_view"
+  },
+  {
+    "Version": "138",
+    "Name": "add_default_category_name_to_channel"
+  },
+  {
+    "Version": "139",
+    "Name": "remoteclusters_add_last_global_user_sync_at"
+  },
+  {
+    "Version": "140",
+    "Name": "add_lastmemberssyncat_to_sharedchannelremotes"
+  },
+  {
+    "Version": "141",
+    "Name": "add_remoteid_channelid_to_post_acknowledgements"
+  },
+  {
+    "Version": "142",
+    "Name": "create_content_flagging_tables"
+  },
+  {
+    "Version": "143",
+    "Name": "content_flagging_table_index"
+  },
+  {
+    "Version": "144",
+    "Name": "add_dcr_fields_to_oauth_apps"
+  },
+  {
+    "Version": "145",
+    "Name": "add_pkce_to_oauthauthdata"
+  },
+  {
+    "Version": "146",
+    "Name": "add_audience_and_resource_to_oauth"
+  },
+  {
+    "Version": "147",
+    "Name": "create_autotranslation_tables"
+  },
+  {
+    "Version": "148",
+    "Name": "add_burn_on_read_messages"
+  },
+  {
+    "Version": "149",
+    "Name": "create_recaps"
+  },
+  {
+    "Version": "150",
+    "Name": "add_translation_state"
+  },
+  {
+    "Version": "151",
+    "Name": "add_autotranslationdisabled_to_channelmembers"
+  },
+  {
+    "Version": "152",
+    "Name": "translations_primary_key_change"
+  },
+  {
+    "Version": "153",
+    "Name": "add_download_count"
+  },
+  {
+    "Version": "154",
+    "Name": "increase_systems_value_size"
+  },
+  {
+    "Version": "155",
+    "Name": "add_status_last_activity_at_index"
+  },
+  {
+    "Version": "156",
+    "Name": "add_messagesource_to_posts"
+  },
+  {
+    "Version": "157",
+    "Name": "add_trgm_index"
+  },
+  {
+    "Version": "158",
+    "Name": "upgrade_cluster_discovery"
+  },
+  {
+    "Version": "159",
+    "Name": "create_autotranslation_tables"
+  },
+  {
+    "Version": "160",
+    "Name": "add_translation_channel_id"
+  },
+  {
+    "Version": "161",
+    "Name": "drop_translation_updateat_index"
+  },
+  {
+    "Version": "162",
+    "Name": "create_translation_channel_updateat_index"
+  },
+  {
+    "Version": "163",
+    "Name": "add_schemeid_to_roles"
+  },
+  {
+    "Version": "164",
+    "Name": "backfill_roles_schemeid"
+  },
+  {
+    "Version": "165",
+    "Name": "add_roles_schemeid_index"
+  },
+  {
+    "Version": "166",
+    "Name": "deduplicate_policy_names"
+  },
+  {
+    "Version": "170",
+    "Name": "add_user_tracking_to_properties"
+  },
+  {
+    "Version": "171",
+    "Name": "add_object_type_to_property_fields"
+  },
+  {
+    "Version": "172",
+    "Name": "drop_property_fields_old_unique_index"
+  },
+  {
+    "Version": "173",
+    "Name": "create_property_fields_legacy_index"
+  },
+  {
+    "Version": "174",
+    "Name": "create_property_fields_typed_index"
+  },
+  {
+    "Version": "175",
+    "Name": "add_protected_and_permissions_to_property_fields"
+  },
+  {
+    "Version": "176",
+    "Name": "create_views"
+  },
+  {
+    "Version": "177",
+    "Name": "make_email_nullable"
+  },
+  {
+    "Version": "178",
+    "Name": "create_tasks"
+  },
+  {
+    "Version": "179",
+    "Name": "add_tasks_creator_id_index"
+  },
+  {
+    "Version": "180",
+    "Name": "create_user_stories"
+  },
+  {
+    "Version": "181",
+    "Name": "add_posts_createat_id_composite_index"
+  },
+  {
+    "Version": "182",
+    "Name": "optimize_performance_indexes"
+  },
+  {
+    "Version": "183",
+    "Name": "localize_default_channel_names"
+  },
+  {
+    "Version": "167",
+    "Name": "create_views_channel_id_delete_at_index"
+  },
+  {
+    "Version": "168",
+    "Name": "add_linked_field_id_to_property_fields"
+  },
+  {
+    "Version": "169",
+    "Name": "create_linked_field_id_index"
+  }
+]

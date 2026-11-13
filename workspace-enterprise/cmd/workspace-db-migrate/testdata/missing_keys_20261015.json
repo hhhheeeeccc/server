@@ -1,0 +1,290 @@
+[
+  {
+    "table": "accesscontrolpolicies",
+    "name": "accesscontrolpolicies_pkey"
+  },
+  {
+    "table": "accesscontrolpolicies",
+    "name": "idx_accesscontrolpolicies_name_type"
+  },
+  {
+    "table": "accesscontrolpolicyhistory",
+    "name": "accesscontrolpolicyhistory_pkey"
+  },
+  {
+    "table": "bots",
+    "name": "bots_pkey"
+  },
+  {
+    "table": "channelbookmarks",
+    "name": "channelbookmarks_pkey"
+  },
+  {
+    "table": "channelmemberhistory",
+    "name": "channelmemberhistory_pkey"
+  },
+  {
+    "table": "clusterdiscovery",
+    "name": "clusterdiscovery_pkey"
+  },
+  {
+    "table": "commands",
+    "name": "commands_pkey"
+  },
+  {
+    "table": "commandwebhooks",
+    "name": "commandwebhooks_pkey"
+  },
+  {
+    "table": "compliances",
+    "name": "compliances_pkey"
+  },
+  {
+    "table": "contentflaggingcommonreviewers",
+    "name": "contentflaggingcommonreviewers_pkey"
+  },
+  {
+    "table": "contentflaggingteamreviewers",
+    "name": "contentflaggingteamreviewers_pkey"
+  },
+  {
+    "table": "contentflaggingteamsettings",
+    "name": "contentflaggingteamsettings_pkey"
+  },
+  {
+    "table": "db_lock",
+    "name": "db_lock_pkey"
+  },
+  {
+    "table": "desktoptokens",
+    "name": "desktoptokens_pkey"
+  },
+  {
+    "table": "emoji",
+    "name": "emoji_name_deleteat_key"
+  },
+  {
+    "table": "emoji",
+    "name": "emoji_pkey"
+  },
+  {
+    "table": "groupchannels",
+    "name": "groupchannels_pkey"
+  },
+  {
+    "table": "groupmembers",
+    "name": "groupmembers_pkey"
+  },
+  {
+    "table": "groupteams",
+    "name": "groupteams_pkey"
+  },
+  {
+    "table": "incomingwebhooks",
+    "name": "incomingwebhooks_pkey"
+  },
+  {
+    "table": "notifyadmin",
+    "name": "notifyadmin_pkey"
+  },
+  {
+    "table": "oauthaccessdata",
+    "name": "oauthaccessdata_clientid_userid_key"
+  },
+  {
+    "table": "oauthaccessdata",
+    "name": "oauthaccessdata_pkey"
+  },
+  {
+    "table": "oauthapps",
+    "name": "oauthapps_pkey"
+  },
+  {
+    "table": "oauthauthdata",
+    "name": "oauthauthdata_pkey"
+  },
+  {
+    "table": "outgoingoauthconnections",
+    "name": "outgoingoauthconnections_pkey"
+  },
+  {
+    "table": "outgoingwebhooks",
+    "name": "outgoingwebhooks_pkey"
+  },
+  {
+    "table": "persistentnotifications",
+    "name": "persistentnotifications_pkey"
+  },
+  {
+    "table": "postreminders",
+    "name": "postreminders_pkey"
+  },
+  {
+    "table": "productnoticeviewstate",
+    "name": "productnoticeviewstate_pkey"
+  },
+  {
+    "table": "propertyvalues",
+    "name": "idx_propertyvalues_unique"
+  },
+  {
+    "table": "publicchannels",
+    "name": "publicchannels_name_teamid_key"
+  },
+  {
+    "table": "publicchannels",
+    "name": "publicchannels_pkey"
+  },
+  {
+    "table": "readreceipts",
+    "name": "readreceipts_pkey"
+  },
+  {
+    "table": "recapchannels",
+    "name": "recapchannels_pkey"
+  },
+  {
+    "table": "recaps",
+    "name": "recaps_pkey"
+  },
+  {
+    "table": "recentsearches",
+    "name": "recentsearches_pkey"
+  },
+  {
+    "table": "remoteclusters",
+    "name": "remoteclusters_pkey"
+  },
+  {
+    "table": "retentionidsfordeletion",
+    "name": "retentionidsfordeletion_pkey"
+  },
+  {
+    "table": "retentionpolicies",
+    "name": "retentionpolicies_pkey"
+  },
+  {
+    "table": "retentionpolicieschannels",
+    "name": "retentionpolicieschannels_pkey"
+  },
+  {
+    "table": "retentionpoliciesteams",
+    "name": "retentionpoliciesteams_pkey"
+  },
+  {
+    "table": "roles",
+    "name": "roles_name_key"
+  },
+  {
+    "table": "roles",
+    "name": "roles_pkey"
+  },
+  {
+    "table": "scheduledposts",
+    "name": "scheduledposts_pkey"
+  },
+  {
+    "table": "schemes",
+    "name": "schemes_name_key"
+  },
+  {
+    "table": "sharedchannelattachments",
+    "name": "sharedchannelattachments_fileid_remoteid_key"
+  },
+  {
+    "table": "sharedchannelattachments",
+    "name": "sharedchannelattachments_pkey"
+  },
+  {
+    "table": "sharedchannelremotes",
+    "name": "sharedchannelremotes_channelid_remoteid_key"
+  },
+  {
+    "table": "sharedchannelremotes",
+    "name": "sharedchannelremotes_pkey"
+  },
+  {
+    "table": "sharedchannels",
+    "name": "sharedchannels_pkey"
+  },
+  {
+    "table": "sharedchannels",
+    "name": "sharedchannels_sharename_teamid_key"
+  },
+  {
+    "table": "sharedchannelusers",
+    "name": "sharedchannelusers_pkey"
+  },
+  {
+    "table": "sharedchannelusers",
+    "name": "sharedchannelusers_userid_channelid_remoteid_key"
+  },
+  {
+    "table": "teams",
+    "name": "teams_name_key"
+  },
+  {
+    "table": "teams",
+    "name": "teams_pkey"
+  },
+  {
+    "table": "temporaryposts",
+    "name": "temporaryposts_pkey"
+  },
+  {
+    "table": "termsofservice",
+    "name": "termsofservice_pkey"
+  },
+  {
+    "table": "threadmemberships",
+    "name": "threadmemberships_pkey"
+  },
+  {
+    "table": "threads",
+    "name": "threads_pkey"
+  },
+  {
+    "table": "tokens",
+    "name": "tokens_pkey"
+  },
+  {
+    "table": "translations",
+    "name": "translations_pkey"
+  },
+  {
+    "table": "uploadsessions",
+    "name": "uploadsessions_pkey"
+  },
+  {
+    "table": "useraccesstokens",
+    "name": "useraccesstokens_pkey"
+  },
+  {
+    "table": "useraccesstokens",
+    "name": "useraccesstokens_token_key"
+  },
+  {
+    "table": "usergroups",
+    "name": "usergroups_name_key"
+  },
+  {
+    "table": "usergroups",
+    "name": "usergroups_pkey"
+  },
+  {
+    "table": "usergroups",
+    "name": "usergroups_source_remoteid_key"
+  },
+  {
+    "table": "users",
+    "name": "users_authdata_key"
+  },
+  {
+    "table": "usertermsofservice",
+    "name": "usertermsofservice_pkey"
+  },
+  {
+    "table": "views",
+    "name": "views_pkey"
+  }
+]
