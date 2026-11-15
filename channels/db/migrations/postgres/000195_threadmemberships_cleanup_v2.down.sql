@@ -1,1 +1,0 @@
--- Skipping it because the forward migration is destructive

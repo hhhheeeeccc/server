@@ -1,134 +1,67 @@
+# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
 
-logs
+# dependencies
+node_modules/
+.pnpm-store/
+*.manus-starter-[0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f][0-9a-f]
+
+# Expo
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+
+# Native
+.kotlin/
+*.orig.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# Metro
+.metro-health-check*
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+
+# macOS
 .DS_Store
-node_modules
-/data
-/dist
-/webapp/dist
-jobserver
-npm-debug.log
-webapp/yarn-error.log
-mattermost.mattermost-license
-config/mattermost.mattermost-license
-config/config*.json
-config/*.crt
-config/*.key
+*.pem
 
-web/static/js/bundle*.js
-web/static/js/bundle*.js.map
-web/static/js/libs*.js
+# local env files
+.env*.local
 
-config/active.dat
-config/logging.json
-/plugins
+# typescript
+*.tsbuildinfo
 
-# The bundled Enterprise module must resolve in clean GitLab checkouts.
-!go.work
-!go.work.sum
+app-example
 
-#license files
-*.license
-*.mattermost-license
+# generated native folders
+/ios
+/android
 
-# Build Targets
-.prebuild
-.npminstall
-.yarninstall
-/prepackaged_plugins
-
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.o
-*.a
-*.so
-
-# Folders
-_obj
-_test
-testfiles
-
-# Architecture specific extensions/prefixes
-[568vq].out
-
-*.cgo1.go
-*.cgo2.c
-_cgo_defun.c
-_cgo_gotypes.go
-_cgo_export.*
-
-_testmain.go
-
-*.exe
-*.test
-*.prof
-
-# Log files
-*.log
-*.log.jsonl
-*.log.gz
-
-# Fuzz binaries and working dir
-*fuzz.zip
-app/workdir
-
-.tmp
-
-# Vim temporary files
-[._]*.s[a-w][a-z]
-[._]s[a-w][a-z]
-*.un~
-Session.vim
-.netrwhist
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
 *~
 
-# VSCode project files
-.vscode
-*.code-workspace
+# Logs
+logs
+*.log
 
-# Gogland project files
-mattermost-server.iml
+# OS
+Thumbs.db
 
 # Build files
-*bundle.js
+*.tgz
+*.tar.gz
+.cache/
 
-web/sass-files/sass/.sass-cache/
-*config.codekit
-*.sass-cache
-*styles.css
-
-# Default local file storage
-data/*
-webapp/data/*
-api/data/*
-api4/data/*
-app/data/*
-
-cover.out
-ecover.out
-mmctlcover.out
-cprofile.out
-*.test
-webapp/coverage
-/report.xml
-/gotestsum.json
-
-.agignore
-.ctags
-/tags
-.idea
-
-/debug
-/client
-__debug_bin
-report.xml
-*coverage.txt
-go.*.orig
-config.override.mk
-docker-compose.override.yaml
-/tests/big_testplugin.tar.gz
-
-# Export artifacts
-*_export.zip
-*_export-report.json
-
-# mmctl binary
-/mmctl
+# Webdev artifacts (checkpoint zips, migrations, etc.)
+.webdev/
