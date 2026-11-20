@@ -7,6 +7,11 @@ android {
     namespace = "com.videoload.android"
     compileSdk = 35
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
     defaultConfig {
         applicationId = "com.videoload.android"
         minSdk = 24
@@ -16,4 +21,6 @@ android {
     }
 }
 
-kotlin { jvmToolchain(17) }
+kotlin {
+    compilerOptions.jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+}
