@@ -64,7 +64,9 @@ export default function SavedScreen() {
             <View style={styles.fileIcon}><Text style={styles.fileIconText}>▶</Text></View>
             <View style={styles.fileInfo}>
               <Text style={styles.filename} numberOfLines={1}>{item.filename}</Text>
-              <Text style={styles.meta}>{item.source}  •  {formatDate(item.createdAt)}</Text>
+              <Text style={styles.meta}>
+                {[item.source, formatDate(item.createdAt), item.sizeLabel].filter(Boolean).join("  •  ")}
+              </Text>
               <View style={styles.actions}>
                 <TouchableOpacity onPress={() => open(item)} style={styles.actionButton}><Text style={styles.actionText}>فتح</Text></TouchableOpacity>
                 <TouchableOpacity onPress={() => share(item)} style={styles.actionButton}><Text style={styles.actionText}>مشاركة</Text></TouchableOpacity>

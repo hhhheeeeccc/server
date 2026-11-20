@@ -31,8 +31,9 @@ export async function downloadVideo(
   );
   const result = await task.downloadAsync();
   if (!result?.uri) throw new Error("تعذر الوصول إلى الملف الذي تم تنزيله");
+  const info = await FileSystem.getInfoAsync(result.uri);
   onProgress?.(100);
-  return { uri: result.uri, filename };
+  return { uri: result.uri, filename, size: info.exists ? info.size : undefined };
 }
 
 export async function saveToDeviceLibrary(uri: string) {
