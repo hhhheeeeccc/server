@@ -61,7 +61,7 @@ class MainActivity : android.app.Activity() {
 
         urlInput = EditText(this).apply {
             hint = "ألصق رابط الفيديو هنا"
-            hintTextColor = Color.rgb(148, 163, 184)
+            setHintTextColor(Color.rgb(148, 163, 184))
             setTextColor(Color.WHITE)
             textSize = 15f
             setSingleLine(false)
