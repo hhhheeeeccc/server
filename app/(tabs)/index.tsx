@@ -9,6 +9,13 @@ import { downloadVideo, inspectVideoLink, saveToDeviceLibrary, type LinkInspecti
 
 const DARK = "#07111F";
 
+function formatFileSize(size?: number) {
+  if (typeof size !== "number" || !Number.isFinite(size) || size < 0) return undefined;
+  if (size < 1024) return `${size} بايت`;
+  if (size < 1024 * 1024) return `${(size / 1024).toFixed(1)} كيلوبايت`;
+  return `${(size / (1024 * 1024)).toFixed(1)} ميغابايت`;
+}
+
 export default function HomeScreen() {
   const [value, setValue] = useState("");
   const [inspection, setInspection] = useState<LinkInspection | null>(null);
@@ -69,6 +76,7 @@ export default function HomeScreen() {
         source: inspection.source,
         originalUrl: inspection.url,
         createdAt: new Date().toISOString(),
+        sizeLabel: formatFileSize(downloaded.size),
       });
       setStatus("success");
       Alert.alert("تم الحفظ", storedInLibrary ? "تم حفظ الفيديو في مكتبة الجهاز وفي محفوظاتي." : "تم حفظ الفيديو داخل محفوظاتي في التطبيق.");
