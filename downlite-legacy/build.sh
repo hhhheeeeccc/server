@@ -55,7 +55,7 @@ echo "=== 5/7 zipalign ==="
 "$BT/zipalign" -f -p 4 build/unsigned.apk build/aligned.apk
 
 echo "=== 6/7 توقيع (نفس مفتاح debug.keystore الأصلي) ==="
-apksigner sign --ks debug.keystore --ks-pass pass:android \
+"$BT/apksigner" sign --ks debug.keystore --ks-pass pass:android \
   --key-pass pass:android --ks-key-alias androiddebugkey \
   --v1-signing-enabled true --v2-signing-enabled true --v3-signing-enabled true \
   --out "$OUT" build/aligned.apk
