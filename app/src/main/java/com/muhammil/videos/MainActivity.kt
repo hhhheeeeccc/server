@@ -132,7 +132,7 @@ class MainActivity : AppCompatActivity() {
             val card = findViewById<MaterialCardView>(cardId)
             card.strokeWidth = if (selected) dp(2) else 0
             if (selected) {
-                card.strokeColor = ContextCompat.getColorStateList(this, R.color.primary)
+                card.strokeColor = ContextCompat.getColor(this, R.color.primary)
                 card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.primary_container))
             } else {
                 card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.surface_lighter))
