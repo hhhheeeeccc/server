@@ -7,10 +7,7 @@ import org.schabi.newpipe.extractor.downloader.Downloader
 import org.schabi.newpipe.extractor.downloader.Request
 import org.schabi.newpipe.extractor.downloader.Response
 import org.schabi.newpipe.extractor.exceptions.ReCaptchaException
-import org.schabi.newpipe.extractor.localization.ContentCountry
-import org.schabi.newpipe.extractor.localization.Localization
 import org.schabi.newpipe.extractor.services.youtube.YoutubeJavaScriptPlayerManager
-import org.schabi.newpipe.extractor.services.youtube.YoutubeStreamHelper
 import org.schabi.newpipe.extractor.stream.StreamInfo
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -97,9 +94,7 @@ object YouTubeLite {
 
     private fun visionOs(vid: String, maxHeight: Int): LiteStreams? {
         return try {
-            val pr = YoutubeStreamHelper.getVisionOsPlayerResponse(
-                ContentCountry("US"), Localization("en", "US"), vid, null
-            )
+            val pr = YoutubeHelperBridge.visionOsPlayerResponse(vid)
             val details = pr.getObject("videoDetails")
             val formats = pr.getObject("streamingData").getArray("adaptiveFormats")
             if (details.isEmpty || formats == null || formats.size() == 0) return null
