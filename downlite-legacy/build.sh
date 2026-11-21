@@ -18,7 +18,7 @@ for j in $LIBS; do
 done
 [ -x "$BT/aapt2" ] || { echo "ERROR: aapt2 غير موجود في $BT"; ls "$SDK/build-tools" 2>/dev/null || true; exit 1; }
 [ -f "$PLAT/android.jar" ] || { echo "ERROR: android.jar غير موجود في $PLAT"; ls "$SDK/platforms" 2>/dev/null || true; exit 1; }
-[ -x "$ROOT/tools/r8.jar" ] || { echo "ERROR: tools/r8.jar مفقود"; exit 1; }
+[ -f "$ROOT/tools/r8.jar" ] || { echo "ERROR: tools/r8.jar مفقود"; exit 1; }
 [ -x "$(command -v javac)" ] || { echo "ERROR: javac غير متوفر"; exit 1; }
 
 rm -rf build gen classes out
