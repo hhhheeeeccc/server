@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">محمّل الفيديوهات</string>
+    <string name="download_folder">محمّل الفيديوهات</string>
+    <string name="app_subtitle">نزّل الفيديوهات من يوتيوب وإنستغرام — بدون أي تسجيل دخول</string>
+    <string name="privacy_note">لا نطلب أي حساب ولا نجمع أي بيانات. المحتوى العام يُنزَّل مباشرة إلى مجلد التنزيلات.</string>
+
+    <string name="url_hint">الصق رابط الفيديو هنا…</string>
+    <string name="paste">لصق</string>
+    <string name="download">تنزيل</string>
+    <string name="cancel">إلغاء</string>
+    <string name="done">تم</string>
+
+    <string name="quality_best">فيديو MP4 — أفضل جودة</string>
+    <string name="quality_720">فيديو MP4 — 720p</string>
+    <string name="quality_mp3">صوت MP3 فقط</string>
+
+    <!-- حالة محرك التنزيل -->
+    <string name="engine_preparing">جارٍ تجهيز محرك التنزيل…</string>
+    <string name="engine_ready">المحرك جاهز — الصق رابطًا وابدأ التنزيل</string>
+    <string name="engine_failed">تعذّر تجهيز محرك التنزيل. تحقق من اتصالك بالإنترنت ثم أعد المحاولة.</string>
+    <string name="engine_retry">إعادة المحاولة</string>
+
+    <!-- حالة التنزيل -->
+    <string name="download_started">بدأ التنزيل — ستجد الملف في مجلد التنزيلات عند الانتهاء</string>
+    <string name="downloading">جارٍ التنزيل %1$s%%</string>
+    <string name="download_success">تم التنزيل بنجاح: %1$s</string>
+    <string name="download_success_folder">حُفظ داخل مجلد التنزيلات / محمّل الفيديوهات</string>
+
+    <!-- رسائل الخطأ -->
+    <string name="invalid_url">الرابط غير صالح. الصق رابط فيديو صحيحًا من يوتيوب أو إنستغرام.</string>
+    <string name="err_network">تعذّر الاتصال بالإنترنت. تحقق من الشبكة وحاول مرة أخرى.</string>
+    <string name="err_ig_private">هذا المحتوى خاص (حساب خاص أو ستوري) ولا يمكن تنزيله بدون جلسة إنستغرام، والتطبيق لا يطلب تسجيل الدخول مطلقًا. جرّب منشورًا عامًا.</string>
+    <string name="err_ig_not_found">المنشور غير موجود أو تم حذفه من إنستغرام.</string>
+    <string name="err_ig_generic">تعذّر استخراج الفيديو من إنستغرام الآن. أعد المحاولة بعد قليل أو جرّب رابطًا آخر.</string>
+    <string name="err_youtube">تعذّر تنزيل الفيديو. تحقق من الرابط أو أعد المحاولة.</string>
+    <string name="err_generic">حدث خطأ غير متوقع. أعد المحاولة.</string>
+
+    <!-- الإشعارات -->
+    <string name="notif_channel_name">حالة التنزيل</string>
+    <string name="notif_title_downloading">جارٍ تنزيل الفيديو…</string>
+    <string name="notif_in_progress">جارٍ التنزيل، سيظهر إشعار عند الانتهاء</string>
+    <string name="notif_title_done">اكتمل التنزيل</string>
+    <string name="notif_title_error">فشل التنزيل</string>
+
+    <!-- المشاركة -->
+    <string name="share_no_url">لم نجد رابط فيديو في المحتوى المُشارَك. انسخ رابط الفيديو ثم حاول مرة أخرى.</string>
+    <string name="share_from_youtube">تنزيل من يوتيوب</string>
+    <string name="share_from_instagram">تنزيل من إنستغرام — بدون تسجيل دخول</string>
+    <string name="share_from_link">تنزيل الرابط</string>
+    <string name="share_saved_mp4">تم الحفظ بصيغة MP4 (تحويل MP3 غير متاح لهذا الرابط).</string>
+</resources>
