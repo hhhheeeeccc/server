@@ -1,0 +1,32 @@
+name: بناء نزّل الفيديو v2.3 (النسخة القديمة الخفيفة)
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+    paths:
+      - 'downlite-legacy/**'
+
+jobs:
+  build-legacy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: نسخ الكود
+        uses: actions/checkout@v4
+
+      - name: تجهيز Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: بناء النسخة القديمة (نفس الخط الأصلي بدون Gradle)
+        run: bash downlite-legacy/build.sh
+
+      - name: رفع APK القديم
+        uses: actions/upload-artifact@v4
+        with:
+          name: نزّل-الفيديو-v2.3
+          path: downlite-legacy/out/*.apk
+          if-no-files-found: error
