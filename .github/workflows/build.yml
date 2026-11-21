@@ -28,10 +28,11 @@ jobs:
       - name: إعادة تسمية ملفات APK
         run: |
           mkdir -p out
-          cp app/build/outputs/apk/full/debug/full-debug.apk     out/Muhammil-2.5-full.apk
-          cp app/build/outputs/apk/full/release/full-release.apk out/Muhammil-2.5-full-release.apk
-          cp app/build/outputs/apk/lite/debug/lite-debug.apk     out/Muhammil-2.5-lite.apk
-          cp app/build/outputs/apk/lite/release/lite-release.apk out/Muhammil-2.5-lite-release.apk
+          find app/build/outputs/apk -name '*.apk' -print
+          cp "$(find app/build/outputs/apk -path '*full/debug*'  -name '*.apk' | head -1)" out/Muhammil-2.5-full.apk
+          cp "$(find app/build/outputs/apk -path '*full/release*' -name '*.apk' | head -1)" out/Muhammil-2.5-full-release.apk
+          cp "$(find app/build/outputs/apk -path '*lite/debug*'  -name '*.apk' | head -1)" out/Muhammil-2.5-lite.apk
+          cp "$(find app/build/outputs/apk -path '*lite/release*' -name '*.apk' | head -1)" out/Muhammil-2.5-lite-release.apk
           ls -la out
 
       - name: رفع APK كملف جاهز للتنزيل
