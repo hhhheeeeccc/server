@@ -35,9 +35,16 @@ jobs:
           cp "$(find app/build/outputs/apk -path '*lite/release*' -name '*.apk' | head -1)" out/Muhammil-2.5-lite-release.apk
           ls -la out
 
-      - name: رفع APK كملف جاهز للتنزيل
+      - name: رفع APK الخفيف
         uses: actions/upload-artifact@v4
         with:
-          name: محمّل-الفيديوهات-APK
-          path: out/*.apk
+          name: APK-خفيف
+          path: out/Muhammil-2.5-lite*.apk
+          if-no-files-found: error
+
+      - name: رفع APK الكامل
+        uses: actions/upload-artifact@v4
+        with:
+          name: APK-كامل
+          path: out/Muhammil-2.5-full*.apk
           if-no-files-found: error
