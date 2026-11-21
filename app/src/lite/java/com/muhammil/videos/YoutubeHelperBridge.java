@@ -5,7 +5,6 @@ import org.schabi.newpipe.extractor.localization.ContentCountry;
 import org.schabi.newpipe.extractor.localization.Localization;
 import org.schabi.newpipe.extractor.services.youtube.YoutubeStreamHelper;
 
-import java.io.IOException;
 
 /**
  * جسر جافا لاستدعاء YoutubeStreamHelper بتمرير null لمعامل playerTimestamp.
@@ -17,7 +16,7 @@ public final class YoutubeHelperBridge {
     private YoutubeHelperBridge() {
     }
 
-    public static JsonObject visionOsPlayerResponse(String videoId) throws IOException {
+    public static JsonObject visionOsPlayerResponse(String videoId) throws Exception {
         return YoutubeStreamHelper.getVisionOsPlayerResponse(
                 new ContentCountry("US"), new Localization("en", "US"), videoId, null);
     }
