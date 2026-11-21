@@ -12,8 +12,16 @@
     <string name="done">تم</string>
 
     <string name="quality_best">فيديو MP4 — أفضل جودة</string>
+    <string name="quality_best_desc">أعلى دقة متاحة للرابط</string>
     <string name="quality_720">فيديو MP4 — 720p</string>
+    <string name="quality_720_desc">جودة عالية بحجم أصغر</string>
     <string name="quality_mp3">صوت MP3 فقط</string>
+    <string name="quality_mp3_desc">استخراج الصوت وحفظه</string>
+
+    <string name="quality_label">اختر صيغة التنزيل</string>
+    <string name="feature_nologin">بدون تسجيل دخول</string>
+    <string name="feature_folder">حفظ في التنزيلات</string>
+    <string name="feature_sources">يوتيوب وإنستغرام</string>
 
     <!-- حالة محرك التنزيل -->
     <string name="engine_preparing">جارٍ تجهيز محرك التنزيل…</string>

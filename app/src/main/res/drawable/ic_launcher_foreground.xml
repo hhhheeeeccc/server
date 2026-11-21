@@ -4,7 +4,16 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
+    <!-- شارة تشغيل خلف سهم التنزيل -->
+    <path
+        android:fillColor="#66FFFFFF"
+        android:pathData="M30,36 L44,45 L30,54 Z" />
+    <!-- سهم التنزيل -->
     <path
         android:fillColor="#FFFFFFFF"
-        android:pathData="M54,68 L40,54 L48,54 L48,38 L60,38 L60,54 L68,54 Z M38,74 L70,74 L70,80 L38,80 Z" />
+        android:pathData="M50,28 h8 v22 h10 L54,68 L40,50 h10 Z" />
+    <!-- خط الأساس -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M38,74 h32 v7 h-32 Z" />
 </vector>

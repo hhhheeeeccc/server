@@ -23,6 +23,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -48,6 +49,7 @@ class DownloadService : Service() {
         const val ACTION_STATUS = "com.muhammil.videos.DOWNLOAD_STATUS"
         const val EXTRA_STATUS_TEXT = "text"
         const val EXTRA_STATUS_DONE = "done"
+        const val EXTRA_STATUS_PROGRESS = "progress"
 
         private const val TAG = "DownloadService"
         private const val CHANNEL_ID = "downloads"
@@ -167,7 +169,11 @@ class DownloadService : Service() {
                 processId,
                 callback = { progress: Float, _eta: Long, _line: String ->
                     updateNotification(progress)
-                    postStatus(getString(R.string.downloading, progress.toInt().toString()), done = false)
+                    postStatus(
+                        getString(R.string.downloading, progress.toInt().toString()),
+                        done = false,
+                        progress = progress
+                    )
                 }
             )
         } finally {
@@ -188,7 +194,7 @@ class DownloadService : Service() {
 
     /** تنزيل رابط الفيديو المباشر القادم من استراتيجيات إنستغرام اليدوية. */
     private suspend fun saveDirect(video: InstagramExtractor.IgResult.Video) {
-        postStatus(getString(R.string.downloading, "0"), done = false)
+        postStatus(getString(R.string.downloading, "0"), done = false, progress = 0f)
         val temp = File(cacheDir, "ig_${System.currentTimeMillis()}.mp4")
         try {
             val client = OkHttpClient.Builder()
@@ -214,11 +220,13 @@ class DownloadService : Service() {
                             written += n
                             output.write(buf, 0, n)
                             if (total > 0) {
-                                updateNotification((written * 100f / total))
+                                val pct = written * 100f / total
+                                updateNotification(pct)
                                 if (written % (8L * 1024 * 1024) < buf.size) {
                                     postStatus(
-                                        getString(R.string.downloading, (written * 100 / total).toString()),
-                                        done = false
+                                        getString(R.string.downloading, pct.toInt().toString()),
+                                        done = false,
+                                        progress = pct
                                     )
                                 }
                             }
@@ -327,11 +335,12 @@ class DownloadService : Service() {
             .notify(NOTIF_ID, buildNotification(getString(R.string.notif_title_downloading), pct))
     }
 
-    private fun postStatus(text: String, done: Boolean) {
+    private fun postStatus(text: String, done: Boolean, progress: Float = -1f) {
         sendBroadcast(
             Intent(ACTION_STATUS).setPackage(packageName)
                 .putExtra(EXTRA_STATUS_TEXT, text)
                 .putExtra(EXTRA_STATUS_DONE, done)
+                .putExtra(EXTRA_STATUS_PROGRESS, progress)
         )
     }
 

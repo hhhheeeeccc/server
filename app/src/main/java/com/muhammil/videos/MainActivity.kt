@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.PermissionChecker
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.card.MaterialCardView
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -27,11 +28,19 @@ class MainActivity : AppCompatActivity() {
     private lateinit var statusText: TextView
     private lateinit var progress: ProgressBar
     private lateinit var retryBtn: Button
+    private var selectedQuality = "best"
 
     private val statusReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             val text = intent?.getStringExtra(DownloadService.EXTRA_STATUS_TEXT) ?: return
             statusText.text = text
+            val p = intent.getFloatExtra(DownloadService.EXTRA_STATUS_PROGRESS, -1f)
+            if (p >= 0) {
+                progress.isIndeterminate = false
+                progress.progress = p.toInt()
+            } else {
+                progress.isIndeterminate = true
+            }
         }
     }
 
@@ -53,6 +62,19 @@ class MainActivity : AppCompatActivity() {
         retryBtn.setOnClickListener {
             Engine.retry(this)
             retryBtn.visibility = View.GONE
+        }
+
+        // بطاقات الصيغ القابلة للاختيار
+        applyQualitySelection()
+        listOf(
+            "best" to R.id.optBest,
+            "720" to R.id.opt720,
+            "mp3" to R.id.optMp3
+        ).forEach { (key, cardId) ->
+            findViewById<MaterialCardView>(cardId).setOnClickListener {
+                selectedQuality = key
+                applyQualitySelection()
+            }
         }
 
         askForNotificationPermission()
@@ -77,6 +99,7 @@ class MainActivity : AppCompatActivity() {
     private fun render(state: Engine.State) {
         when (state) {
             is Engine.State.NotStarted, is Engine.State.Initializing -> {
+                progress.isIndeterminate = true
                 progress.visibility = View.VISIBLE
                 statusText.text = getString(R.string.engine_preparing)
                 downloadBtn.isEnabled = false
@@ -96,6 +119,29 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    /** تحديث مظهر بطاقات الصيغ حسب الاختيار الحالي. */
+    private fun applyQualitySelection() {
+        listOf(
+            "best" to (R.id.optBest to R.id.checkBest),
+            "720" to (R.id.opt720 to R.id.check720),
+            "mp3" to (R.id.optMp3 to R.id.checkMp3)
+        ).forEach { (key, ids) ->
+            val (cardId, checkId) = ids
+            val selected = key == selectedQuality
+            val card = findViewById<MaterialCardView>(cardId)
+            card.strokeWidth = if (selected) dp(2) else 0
+            if (selected) {
+                card.strokeColor = ContextCompat.getColorStateList(this, R.color.primary)
+                card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.primary_container))
+            } else {
+                card.setCardBackgroundColor(ContextCompat.getColor(this, R.color.surface_lighter))
+            }
+            findViewById<View>(checkId).visibility = if (selected) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun dp(value: Int): Int = (value * resources.displayMetrics.density).toInt()
 
     private fun pasteFromClipboard() {
         val cm = getSystemService(Context.CLIPBOARD_SERVICE) as android.content.ClipboardManager
@@ -127,11 +173,7 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, R.string.engine_preparing, Toast.LENGTH_SHORT).show()
             return
         }
-        val q = when {
-            findViewById<android.widget.RadioButton>(R.id.rbMp3).isChecked -> "mp3"
-            findViewById<android.widget.RadioButton>(R.id.rb720).isChecked -> "720"
-            else -> "best"
-        }
+        val q = selectedQuality
         val service = Intent(this, DownloadService::class.java)
             .putExtra(DownloadService.EXTRA_URL, url)
             .putExtra(DownloadService.EXTRA_QUALITY, q)
