@@ -15,9 +15,6 @@ import android.os.IBinder
 import android.provider.MediaStore
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.yausername.youtubedl_android.YoutubeDL
-import com.yausername.youtubedl_android.YoutubeDLException
-import com.yausername.youtubedl_android.YoutubeDLRequest
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -30,9 +27,6 @@ import okhttp3.Request
 import java.io.File
 import java.io.FileOutputStream
 import java.util.concurrent.TimeUnit
-
-/** خطأ برسالة جاهزة من الموارد العربية. */
-private class AppException(val resId: Int) : Exception()
 
 /**
  * خدمة التنزيل في المقدمة (Foreground Service).
@@ -83,9 +77,6 @@ class DownloadService : Service() {
             } catch (e: AppException) {
                 Log.e(TAG, "download failed (app)", e)
                 fail(getString(e.resId))
-            } catch (e: YoutubeDLException) {
-                Log.e(TAG, "download failed (engine)", e)
-                fail(getString(R.string.err_youtube))
             } catch (e: Exception) {
                 Log.e(TAG, "download failed (unexpected)", e)
                 fail(getString(R.string.err_generic))
@@ -106,18 +97,21 @@ class DownloadService : Service() {
     private suspend fun download(url: String, quality: String) {
         val host = Uri.parse(url).host ?: ""
         val isInstagram = host.contains("instagram.com") || host.contains("instagr.am")
+        val workDir = File(cacheDir, "engine").apply { mkdirs() }
 
         if (!isInstagram) {
-            downloadWithYtDlp(url, quality)
+            finishSave(engineDownload(workDir, url, quality, ::onEngineProgress))
             return
         }
 
-        // إنستغرام: المحرك بوضع الزائر أولًا (بدون أي حساب)
+        // إنستغرام: المحرك بوضع الزائر أولًا (بدون أي حساب) — الطبعة الخفيفة تتجاوز هذا تلقائيًا
         try {
-            downloadWithYtDlp(url, quality)
+            finishSave(engineDownload(workDir, url, quality, ::onEngineProgress))
             return
         } catch (e: CancellationException) {
             throw e
+        } catch (e: EngineUnsupportedException) {
+            Log.i(TAG, "المحرك الخفيف لا يدعم هذا الرابط — ننتقل للاستراتيجيات اليدوية")
         } catch (e: Exception) {
             Log.w(TAG, "المحرك فشل على إنستغرام، ننتقل للاستراتيجيات اليدوية", e)
         }
@@ -142,53 +136,23 @@ class DownloadService : Service() {
         }
     }
 
-    private suspend fun downloadWithYtDlp(url: String, quality: String) {
-        val workDir = File(cacheDir, "ytdl").apply { mkdirs() }
-        val request = YoutubeDLRequest(url)
-        when (quality) {
-            "720" -> request.addOption(
-                "-f",
-                "bv*[ext=mp4][height<=720]+ba[ext=m4a]/b[ext=mp4][height<=720]/b"
-            )
-            "mp3" -> {
-                request.addOption("-x")
-                request.addOption("--audio-format", "mp3")
-                request.addOption("--audio-quality", "0")
-            }
-            else -> request.addOption("-f", "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/b")
-        }
-        if (quality != "mp3") request.addOption("--merge-output-format", "mp4")
-        request.addOption("--no-playlist")
-        request.addOption("-P", workDir.absolutePath)
-        request.addOption("-o", "%(title).80s.%(ext)s")
+    /** نقل النسبة من المحرك إلى الإشعار وواجهة التطبيق. */
+    private fun onEngineProgress(pct: Float) {
+        if (pct >= 0) updateNotification(pct)
+        postStatus(
+            getString(R.string.downloading, pct.toInt().toString()),
+            done = false,
+            progress = pct
+        )
+    }
 
-        val processId = "dl-${System.currentTimeMillis()}"
-        try {
-            YoutubeDL.getInstance().execute(
-                request,
-                processId,
-                callback = { progress: Float, _eta: Long, _line: String ->
-                    updateNotification(progress)
-                    postStatus(
-                        getString(R.string.downloading, progress.toInt().toString()),
-                        done = false,
-                        progress = progress
-                    )
-                }
-            )
-        } finally {
-            runCatching { YoutubeDL.getInstance().destroyProcessById(processId) }
-        }
-
-        val out = workDir.listFiles()
-            ?.filter { it.isFile && !it.name.endsWith(".part") }
-            ?.maxByOrNull { it.lastModified() }
-            ?: throw AppException(R.string.err_generic)
-
-        val mime = if (out.extension.equals("mp3", true)) "audio/mpeg" else "video/mp4"
-        val name = sanitizeName(out.nameWithoutExtension) + "." + out.extension.lowercase()
-        saveToDownloads(out, name, mime)
-        out.delete()
+    /** حفظ ملف المحرك في مجلد التنزيلات وإتمام العملية. */
+    private fun finishSave(out: EngineOutput) {
+        val name =
+            sanitizeName(out.title.ifBlank { out.file.nameWithoutExtension }) +
+                "." + out.file.extension.lowercase()
+        saveToDownloads(out.file, name, out.mime)
+        out.file.delete()
         success(name)
     }
 

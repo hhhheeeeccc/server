@@ -18,6 +18,20 @@ android {
         }
     }
 
+    // طبعتان من نفس الكود:
+    // full = محرك yt-dlp كامل (حجم كبير، MP3 حقيقي ودمج FFmpeg)
+    // lite = محرك NewPipeExtractor الخفيف (~2 MB، يوتيوب + إنستغرام بدون حساب)
+    flavorDimensions "engine"
+    productFlavors {
+        full {
+            dimension "engine"
+        }
+        lite {
+            dimension "engine"
+            applicationIdSuffix ".lite"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -49,7 +63,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.8.4'
     implementation 'com.squareup.okhttp3:okhttp:4.12.0'
 
-    // محرك التنزيل (yt-dlp مُجمَّع لأندرويد) + FFmpeg لتحويل MP3
-    implementation 'io.github.junkfood02.youtubedl-android:library:0.18.1'
-    implementation 'io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1'
+    // محرك الطبعة الكاملة: yt-dlp مُجمَّع لأندرويد + FFmpeg لتحويل MP3
+    fullImplementation 'io.github.junkfood02.youtubedl-android:library:0.18.1'
+    fullImplementation 'io.github.junkfood02.youtubedl-android:ffmpeg:0.18.1'
+
+    // محرك الطبعة الخفيفة: NewPipeExtractor وجيرانه (جافا خالص — بدون أي native)
+    liteImplementation fileTree(dir: 'libs', include: ['*.jar'])
 }

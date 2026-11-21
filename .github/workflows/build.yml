@@ -22,14 +22,16 @@ jobs:
       - name: تجهيز Gradle
         uses: gradle/actions/setup-gradle@v4
 
-      - name: بناء التطبيق
-        run: ./gradlew assembleDebug assembleRelease --no-daemon --stacktrace
+      - name: بناء التطبيق (الطبعتان الكاملة والخفيفة)
+        run: ./gradlew assembleFullDebug assembleFullRelease assembleLiteDebug assembleLiteRelease --no-daemon --stacktrace
 
       - name: إعادة تسمية ملفات APK
         run: |
           mkdir -p out
-          cp app/build/outputs/apk/debug/app-debug.apk      out/Muhammil-Videos-2.4.apk
-          cp app/build/outputs/apk/release/app-release.apk  out/Muhammil-Videos-2.4-release.apk
+          cp app/build/outputs/apk/full/debug/full-debug.apk     out/Muhammil-2.5-full.apk
+          cp app/build/outputs/apk/full/release/full-release.apk out/Muhammil-2.5-full-release.apk
+          cp app/build/outputs/apk/lite/debug/lite-debug.apk     out/Muhammil-2.5-lite.apk
+          cp app/build/outputs/apk/lite/release/lite-release.apk out/Muhammil-2.5-lite-release.apk
           ls -la out
 
       - name: رفع APK كملف جاهز للتنزيل

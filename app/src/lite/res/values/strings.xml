@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">محمّل الفيديوهات لايت</string>
+    <string name="quality_mp3">صوت M4A — بدون تحويل</string>
+    <string name="quality_mp3_desc">أسرع وأخف — النسخة الخفيفة بدون FFmpeg</string>
+    <string name="app_subtitle">نزّل الفيديوهات من يوتيوب وإنستغرام — نسخة خفيفة ٢ م.ب</string>
+</resources>

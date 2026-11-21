@@ -2,14 +2,12 @@ package com.muhammil.videos
 
 import android.content.Context
 import android.util.Log
-import com.yausername.ffmpeg.FFmpeg
-import com.yausername.youtubedl_android.YoutubeDL
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
 /**
- * حالة محرك التنزيل (yt-dlp).
+ * حالة محرك التنزيل (حسب الطبعة: yt-dlp في full أو NewPipeExtractor في lite).
  *
  * هذا الملف هو إصلاح المشكلة الأولى: "يتم الاتصال بمحرك التنزيلات ثم يخرج ولا يحدث شيء".
  * السبب كان أن أي خطأ أثناء التهيئة كان يُبتلع بصمت. الآن:
@@ -43,8 +41,7 @@ object Engine {
             // ثلاث محاولات مع مهلة تصاعدية بدل الفشل الصامت
             while (attempt < 3 && _state.value !is State.Ready) {
                 try {
-                    YoutubeDL.getInstance().init(appContext)
-                    FFmpeg.init(appContext)
+                    initEngine(appContext)
                     Log.i(TAG, "engine ready")
                     _state.value = State.Ready
                 } catch (e: Exception) {
