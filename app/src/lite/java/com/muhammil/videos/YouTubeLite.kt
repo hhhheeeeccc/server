@@ -97,14 +97,14 @@ object YouTubeLite {
             val pr = YoutubeHelperBridge.visionOsPlayerResponse(vid)
             val details = pr.getObject("videoDetails")
             val formats = pr.getObject("streamingData").getArray("adaptiveFormats")
-            if (details.isEmpty || formats == null || formats.size() == 0) return null
+            if (details.isEmpty() || formats == null || formats.size == 0) return null
             val title = details.getString("title", "فيديو")
 
             // أفضل صوت AAC (m4a)
             var aurl: String? = null
             var abitrate = 0L
             var asize = 0L
-            for (i in 0 until formats.size()) {
+            for (i in 0 until formats.size) {
                 val f = formats.getObject(i)
                 if (f.getString("mimeType", "").startsWith("audio/mp4")) {
                     val b = f.getLong("bitrate", 0)
@@ -119,7 +119,7 @@ object YouTubeLite {
             // أفضل فيديو mp4/avc1 ضمن الارتفاع المطلوب (فك ترميز عتادي + دمج MediaMuxer)
             var best: JsonObject? = null
             var bestH = 0
-            for (i in 0 until formats.size()) {
+            for (i in 0 until formats.size) {
                 val f = formats.getObject(i)
                 val mime = f.getString("mimeType", "")
                 if (mime.startsWith("video/mp4") && mime.contains("avc1")) {
