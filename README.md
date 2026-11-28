@@ -6,4 +6,4 @@
 
 - ملف `VERSION` يحدد أحدث إصدار (الاسم / الكود / رابط APK المباشر).
 - التطبيق يفحص التحديث تلقائيًا كل 6 ساعات، ومن الإعدادات زر «البحث عن تحديث».
-- أحدث APK: [Nazzil-Video-v2.18.14.apk](https://raw.githubusercontent.com/hhhheeeeccc/server/main/Nazzil-Video-v2.18.14.apk)
+- أحدث APK: [Nazzil-Video-v2.18.15.apk](https://raw.githubusercontent.com/hhhheeeeccc/server/main/Nazzil-Video-v2.18.15.apk)
